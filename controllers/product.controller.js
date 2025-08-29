@@ -3,13 +3,14 @@ import Product from "../models/product.model.js";
 //create a product 
 export const createProd = async(req,res)=>{
     try{
-        const {name,sku,price,stock,categoryId} = req.body;
+        const {name,sku,price,stock,categoryId,supplierId} = req.body;
         const newProd = new Product({
             name,
             sku,
             price,
             stock,
-            categoryId
+            categoryId,
+            supplierId
         });
         await newProd.save();
         res.status(201).json(newProd);

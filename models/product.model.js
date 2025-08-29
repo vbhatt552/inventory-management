@@ -29,7 +29,13 @@ const prodSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Category',
+    },
+     supplierId:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Supplier',
     }
+
 },{
     timestamps: true
 });
