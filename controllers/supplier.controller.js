@@ -36,6 +36,21 @@ export const getSupById = async(req,res)=>{
     }
 }
 
+//update supplier
+
+export const updateSup = async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const updatedSup = await Supplier.findByIdAndUpdate(id,
+            req.body,
+            {new:true,runValidators:true}
+        )
+        res.status(200).json(updatedSup)
+    }catch(error){
+        res.status(400).json({message:error.message});
+    }
+}
+
 //delete supplier
 
 export const deleteSup = async(req,res)=>{
