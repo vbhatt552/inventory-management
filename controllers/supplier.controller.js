@@ -23,3 +23,15 @@ export const getSup = async(req,res)=>{
         res.status(400).json({message:error.message});
     }
 }
+
+//get supplier by id
+
+export const getSupById = async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const supplier = await Supplier.findById(id);
+        res.status(200).json(supplier);
+    }catch(error){
+        res.status(400).json({message:error.message})
+    }
+}
