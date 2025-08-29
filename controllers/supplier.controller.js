@@ -35,3 +35,15 @@ export const getSupById = async(req,res)=>{
         res.status(400).json({message:error.message})
     }
 }
+
+//delete supplier
+
+export const deleteSup = async(req,res)=>{
+    try{
+        const {id} = req.params;
+        await Supplier.findByIdAndDelete(id);
+        res.status(200).json({message:"Deleted Successfully"});
+    }catch(error){
+        res.status(400).json({message:error.message});
+    }
+};
