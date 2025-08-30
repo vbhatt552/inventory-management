@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import categoryRoutes from './routes/category.routes.js'
 import prodRouter from './routes/product.route.js'
 import supRouter from './routes/supplier.route.js'
+import tranRouter from './routes/transaction.route.js'
 dotenv.config();
 
 const app = express();
@@ -15,7 +16,8 @@ app.use('/api/categories',categoryRoutes);
 app.use('/api/products',prodRouter);
 //route to use suppliers
 app.use('/api/suppliers',supRouter);
-
+//route to use transactions
+app.use('/api/transactions',tranRouter);
 const PORT = process.env.PORT||5000;
 const mongoUri = process.env.MONGO_URI;
 mongoose.connect(mongoUri)
