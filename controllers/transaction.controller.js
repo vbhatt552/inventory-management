@@ -33,8 +33,19 @@ res.status(400).json({message:error.message});
 export const getTrans = async(req,res)=>{
     try{
 const transactions = await Transaction.find();
-if(!transactions) return res.status(404).json("No transactions found");
 res.status(200).json(transactions);
+    }catch(error){
+res.status(400).json({message:error.message});
+    }
+}
+
+//get transaction by id
+export const getTransById = async(req,res)=>{
+    try{
+const {id} = req.params;
+const transaction = await Transaction.findById(id);
+if(!transaction) return res.status(404).json({message:"Provide a valid transaction id"});
+res.status(200).json(transaction);
     }catch(error){
 res.status(400).json({message:error.message});
     }
